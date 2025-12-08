@@ -1,0 +1,23 @@
+# Terraform
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+
+# Keys / Secrets
+*.pem
+*.key
+*.pub
+dovekey
+dovekey.pub
+
+# Generated files
+private_ips.txt
+
+# Sensitive tfvars
+*.tfvars
+*.auto.tfvars
+
+# OS / Editor
+*.log
+.DS_Store
