@@ -1,15 +1,13 @@
-# Terraform
+# Terraform directories
 .terraform/
-.terraform.lock.hcl
 terraform.tfstate
 terraform.tfstate.backup
+.terraform.lock.hcl
 
 # Keys / Secrets
 *.pem
 *.key
-*.pub
 dovekey
-dovekey.pub
 
 # Generated files
 private_ips.txt
