@@ -23,10 +23,14 @@
 .
 ├── InstID.tf        # 查詢最新 Ubuntu AMI
 ├── Instance.tf      # 建立 EC2 instance + provisioners
+├── Keypair.tf       # 建立 EC2 Key Pair
+├── SecGrp.tf        # 建立 Security Group（dove-sg）
+├── backend.tf       # Terraform backend 設定（S3）
+├── dovekey.pub      # 公鑰檔案（Keypair.tf 會用到）
 ├── provider.tf      # AWS Provider 設定
 ├── var.tf           # 變數設定
-├── web.sh           # EC2 建置腳本（需自行準備）
-└── private_ips.txt  # Terraform 執行後生成
+├── web.sh           # EC2 架設網站初始化腳本
+└── .gitignore       # 忽略敏感或暫存檔案
 ```
 
 ---
@@ -42,9 +46,11 @@
 
 ---
 
+## 技術說明
+
 ### Data Source 查詢 AMI
 
-專案使用 `aws_ami` 自動取得最新 Ubuntu server AMI，而不是手動輸入。
+專案使用 `aws_ami` 自動取得最新 Ubuntu server AMI。
 
 ### Provisioners
 
@@ -53,8 +59,6 @@
 * **file**：上傳 web.sh
 * **remote-exec**：在 EC2 執行腳本
 * **local-exec**：寫入本地 private_ips.txt
-
-> 注意：Provisioners 屬於 "最後手段"，在正式專案建議使用 userdata 或 CM 工具（Ansible）。
 
 ### Output
 
